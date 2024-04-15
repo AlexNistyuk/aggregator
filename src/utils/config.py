@@ -12,12 +12,17 @@ ENV_FILE_PATH = os.path.join(BASE_DIR.parent.parent, ".env")
 class Settings(BaseSettings):
     bot_token: SecretStr
     data_filename: str
+    mongodb_url: str
+    mongodb_database: str
+    payment_collection: str
 
     @property
-    def data_file(self):
+    def data_filepath(self):
         return os.path.join(BASE_DIR.parent.parent, self.data_filename)
 
-    model_config = SettingsConfigDict(env_file=ENV_FILE_PATH, extra="allow")
+    model_config = SettingsConfigDict(
+        env_file=ENV_FILE_PATH, extra="allow", env_file_encoding="utf-8"
+    )
 
 
 @lru_cache

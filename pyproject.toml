@@ -7,10 +7,11 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-bson = "^0.5.10"
-pymongo = "^4.6.3"
 pydantic-settings = "^2.2.1"
 aiogram = "^3.4.1"
+motor = "^3.4.0"
+bson = "^0.5.10"
+pymongo = "^4.6.3"
 
 
 [tool.poetry.group.dev.dependencies]
