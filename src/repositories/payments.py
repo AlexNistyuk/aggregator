@@ -14,7 +14,9 @@ class PaymentRepository(DataBaseManager, IRepository):
     async def insert_many(self, documents: Iterable[dict]) -> InsertManyResult:
         return await self.db[self.collection].insert_many(documents)
 
-    async def get_between_dates(self, date_from: datetime, date_to: datetime):
+    async def get_between_dates(
+        self, date_from: datetime, date_to: datetime
+    ) -> list[dict]:
         return (
             await self.db[self.collection]
             .find({"dt": {"$gte": date_from, "$lte": date_to}})

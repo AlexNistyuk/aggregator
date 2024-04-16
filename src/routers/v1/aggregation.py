@@ -12,4 +12,6 @@ router = Router()
 async def get_aggregation_data(message: Message):
     json_data = json.loads(message.text)
 
-    return await AggregationService().get_aggregation_data(json_data)
+    aggregation_data = await AggregationService().get_aggregation_data(json_data)
+
+    await message.answer(json.dumps(aggregation_data))

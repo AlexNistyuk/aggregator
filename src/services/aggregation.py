@@ -30,10 +30,10 @@ class AggregationService(IService):
         date_rounder = self.round_map.get(data["group_type"])
         timedelta = self.timedelta_map.get(data["group_type"])
 
-        payment_between_dates: list[dict] = await self.repository.get_between_dates(
+        payment_between_dates = await self.repository.get_between_dates(
             date_from, date_to
         )
-        aggregated_data: dict = self.__get_aggregated_data(
+        aggregated_data = self.__get_aggregated_data(
             payment_between_dates, date_rounder
         )
 
